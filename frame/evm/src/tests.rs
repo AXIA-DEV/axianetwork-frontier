@@ -95,34 +95,34 @@ fn fail_call_return_ok() {
 #[test]
 fn fee_deduction() {
 	new_test_ext().execute_with(|| {
-		// Create an EVM address and the corresponding Substrate address that will be charged fees and refunded
+		// Create an EVM address and the corresponding Axlib address that will be charged fees and refunded
 		let evm_addr = H160::from_str("1000000000000000000000000000000000000003").unwrap();
-		let substrate_addr = <Test as Config>::AddressMapping::into_account_id(evm_addr);
+		let axlib_addr = <Test as Config>::AddressMapping::into_account_id(evm_addr);
 
 		// Seed account
-		let _ = <Test as Config>::Currency::deposit_creating(&substrate_addr, 100);
-		assert_eq!(Balances::free_balance(&substrate_addr), 100);
+		let _ = <Test as Config>::Currency::deposit_creating(&axlib_addr, 100);
+		assert_eq!(Balances::free_balance(&axlib_addr), 100);
 
 		// Deduct fees as 10 units
 		let imbalance = <<Test as Config>::OnChargeTransaction as OnChargeEVMTransaction<Test>>::withdraw_fee(&evm_addr, U256::from(10)).unwrap();
-		assert_eq!(Balances::free_balance(&substrate_addr), 90);
+		assert_eq!(Balances::free_balance(&axlib_addr), 90);
 
 		// Refund fees as 5 units
 		<<Test as Config>::OnChargeTransaction as OnChargeEVMTransaction<Test>>::correct_and_deposit_fee(&evm_addr, U256::from(5), imbalance);
-		assert_eq!(Balances::free_balance(&substrate_addr), 95);
+		assert_eq!(Balances::free_balance(&axlib_addr), 95);
 	});
 }
 
 #[test]
 fn ed_0_refund_patch_works() {
 	new_test_ext().execute_with(|| {
-		// Verifies that the OnChargeEVMTransaction patch is applied and fixes a known bug in Substrate for evm transactions.
-		// https://github.com/paritytech/substrate/issues/10117
+		// Verifies that the OnChargeEVMTransaction patch is applied and fixes a known bug in Axlib for evm transactions.
+		// https://github.com/paritytech/axlib/issues/10117
 		let evm_addr = H160::from_str("1000000000000000000000000000000000000003").unwrap();
-		let substrate_addr = <Test as Config>::AddressMapping::into_account_id(evm_addr);
+		let axlib_addr = <Test as Config>::AddressMapping::into_account_id(evm_addr);
 
-		let _ = <Test as Config>::Currency::deposit_creating(&substrate_addr, 21777);
-		assert_eq!(Balances::free_balance(&substrate_addr), 21777);
+		let _ = <Test as Config>::Currency::deposit_creating(&axlib_addr, 21777);
+		assert_eq!(Balances::free_balance(&axlib_addr), 21777);
 
 		let _ = EVM::call(
 			Origin::root(),
@@ -135,20 +135,20 @@ fn ed_0_refund_patch_works() {
 			Some(U256::from(0)),
 		);
 		// All that was due, was refunded.
-		assert_eq!(Balances::free_balance(&substrate_addr), 776);
+		assert_eq!(Balances::free_balance(&axlib_addr), 776);
 	});
 }
 
 #[test]
 fn ed_0_refund_patch_is_required() {
 	new_test_ext().execute_with(|| {
-		// This test proves that the patch is required, verifying that the current Substrate behaviour is incorrect
+		// This test proves that the patch is required, verifying that the current Axlib behaviour is incorrect
 		// for ED 0 configured chains.
 		let evm_addr = H160::from_str("1000000000000000000000000000000000000003").unwrap();
-		let substrate_addr = <Test as Config>::AddressMapping::into_account_id(evm_addr);
+		let axlib_addr = <Test as Config>::AddressMapping::into_account_id(evm_addr);
 
-		let _ = <Test as Config>::Currency::deposit_creating(&substrate_addr, 100);
-		assert_eq!(Balances::free_balance(&substrate_addr), 100);
+		let _ = <Test as Config>::Currency::deposit_creating(&axlib_addr, 100);
+		assert_eq!(Balances::free_balance(&axlib_addr), 100);
 
 		// Drain funds
 		let _ =
@@ -157,19 +157,19 @@ fn ed_0_refund_patch_is_required() {
 				U256::from(100),
 			)
 			.unwrap();
-		assert_eq!(Balances::free_balance(&substrate_addr), 0);
+		assert_eq!(Balances::free_balance(&axlib_addr), 0);
 
 		// Try to refund. With ED 0, although the balance is now 0, the account still exists.
 		// So its expected that calling `deposit_into_existing` results in the AccountData to increase the Balance.
 		//
 		// Is not the case, and this proves that the refund logic needs to be handled taking this into account.
 		assert_eq!(
-			<Test as Config>::Currency::deposit_into_existing(&substrate_addr, 5u32.into())
+			<Test as Config>::Currency::deposit_into_existing(&axlib_addr, 5u32.into())
 				.is_err(),
 			true
 		);
 		// Balance didn't change, and should be 5.
-		assert_eq!(Balances::free_balance(&substrate_addr), 0);
+		assert_eq!(Balances::free_balance(&axlib_addr), 0);
 	});
 }
 

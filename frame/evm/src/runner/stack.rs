@@ -54,7 +54,7 @@ impl<T: Config> Runner<T> {
 	) -> Result<ExecutionInfo<R>, Error<T>>
 	where
 		F: FnOnce(
-			&mut StackExecutor<'config, SubstrateStackState<'_, 'config, T>>,
+			&mut StackExecutor<'config, AxlibStackState<'_, 'config, T>>,
 		) -> (ExitReason, R),
 	{
 		// Gas price check is skipped when performing a gas estimation.
@@ -75,7 +75,7 @@ impl<T: Config> Runner<T> {
 		};
 
 		let metadata = StackSubstateMetadata::new(gas_limit, &config);
-		let state = SubstrateStackState::new(&vicinity, metadata);
+		let state = AxlibStackState::new(&vicinity, metadata);
 		let mut executor =
 			StackExecutor::new_with_precompile(state, config, T::Precompiles::execute);
 
@@ -236,14 +236,14 @@ impl<T: Config> RunnerT<T> for Runner<T> {
 	}
 }
 
-struct SubstrateStackSubstate<'config> {
+struct AxlibStackSubstate<'config> {
 	metadata: StackSubstateMetadata<'config>,
 	deletes: BTreeSet<H160>,
 	logs: Vec<Log>,
-	parent: Option<Box<SubstrateStackSubstate<'config>>>,
+	parent: Option<Box<AxlibStackSubstate<'config>>>,
 }
 
-impl<'config> SubstrateStackSubstate<'config> {
+impl<'config> AxlibStackSubstate<'config> {
 	pub fn metadata(&self) -> &StackSubstateMetadata<'config> {
 		&self.metadata
 	}
@@ -321,19 +321,19 @@ impl<'config> SubstrateStackSubstate<'config> {
 	}
 }
 
-/// Substrate backend for EVM.
-pub struct SubstrateStackState<'vicinity, 'config, T> {
+/// Axlib backend for EVM.
+pub struct AxlibStackState<'vicinity, 'config, T> {
 	vicinity: &'vicinity Vicinity,
-	substate: SubstrateStackSubstate<'config>,
+	substate: AxlibStackSubstate<'config>,
 	_marker: PhantomData<T>,
 }
 
-impl<'vicinity, 'config, T: Config> SubstrateStackState<'vicinity, 'config, T> {
+impl<'vicinity, 'config, T: Config> AxlibStackState<'vicinity, 'config, T> {
 	/// Create a new backend with given vicinity.
 	pub fn new(vicinity: &'vicinity Vicinity, metadata: StackSubstateMetadata<'config>) -> Self {
 		Self {
 			vicinity,
-			substate: SubstrateStackSubstate {
+			substate: AxlibStackSubstate {
 				metadata,
 				deletes: BTreeSet::new(),
 				logs: Vec::new(),
@@ -344,7 +344,7 @@ impl<'vicinity, 'config, T: Config> SubstrateStackState<'vicinity, 'config, T> {
 	}
 }
 
-impl<'vicinity, 'config, T: Config> BackendT for SubstrateStackState<'vicinity, 'config, T> {
+impl<'vicinity, 'config, T: Config> BackendT for AxlibStackState<'vicinity, 'config, T> {
 	fn gas_price(&self) -> U256 {
 		self.vicinity.gas_price
 	}
@@ -413,7 +413,7 @@ impl<'vicinity, 'config, T: Config> BackendT for SubstrateStackState<'vicinity, 
 }
 
 impl<'vicinity, 'config, T: Config> StackStateT<'config>
-	for SubstrateStackState<'vicinity, 'config, T>
+	for AxlibStackState<'vicinity, 'config, T>
 {
 	fn metadata(&self) -> &StackSubstateMetadata<'config> {
 		self.substate.metadata()
@@ -509,7 +509,7 @@ impl<'vicinity, 'config, T: Config> StackStateT<'config>
 	}
 
 	fn reset_balance(&mut self, _address: H160) {
-		// Do nothing on reset balance in Substrate.
+		// Do nothing on reset balance in Axlib.
 		//
 		// This function exists in EVM because a design issue
 		// (arguably a bug) in SELFDESTRUCT that can cause total
@@ -517,7 +517,7 @@ impl<'vicinity, 'config, T: Config> StackStateT<'config>
 	}
 
 	fn touch(&mut self, _address: H160) {
-		// Do nothing on touch in Substrate.
+		// Do nothing on touch in Axlib.
 		//
 		// EVM pallet considers all accounts to exist, and distinguish
 		// only empty and non-empty accounts. This avoids many of the

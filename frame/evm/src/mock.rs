@@ -131,6 +131,6 @@ impl crate::Config for Test {
 	type ChainId = ();
 	type BlockGasLimit = ();
 	type OnChargeTransaction = ();
-	type BlockHashMapping = crate::SubstrateBlockHashMapping<Self>;
+	type BlockHashMapping = crate::AxlibBlockHashMapping<Self>;
 	type FindAuthor = FindAuthorTruncated;
 }

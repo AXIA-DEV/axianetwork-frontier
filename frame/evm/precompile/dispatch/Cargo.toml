@@ -4,14 +4,14 @@ version = "2.0.0-dev"
 authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2018"
 license = "Apache-2.0"
-homepage = "https://substrate.io"
+homepage = "https://axlib.io"
 repository = "https://github.com/paritytech/frontier/"
 description = "DISPATCH precompiles for EVM pallet."
 
 [dependencies]
-sp-core = { version = "4.0.0-dev", default-features = false, git = "https://github.com/purestake/substrate", branch = "moonbeam-polkadot-v0.9.12" }
-sp-io = { version = "4.0.0-dev", default-features = false, git = "https://github.com/purestake/substrate", branch = "moonbeam-polkadot-v0.9.12" }
-frame-support = { version = "4.0.0-dev", default-features = false, git = "https://github.com/purestake/substrate", branch = "moonbeam-polkadot-v0.9.12" }
+sp-core = { version = "4.0.0-dev", default-features = false, git = "https://github.com/AXIA-DEV/axlib-axtend", branch = "master" }
+sp-io = { version = "4.0.0-dev", default-features = false, git = "https://github.com/AXIA-DEV/axlib-axtend", branch = "master" }
+frame-support = { version = "4.0.0-dev", default-features = false, git = "https://github.com/AXIA-DEV/axlib-axtend", branch = "master" }
 pallet-evm = { version = "6.0.0-dev", default-features = false, path = "../.." }
 fp-evm = { version = "3.0.0-dev", default-features = false, path = "../../../../primitives/evm" }
 codec = { package = "parity-scale-codec", version = "2.0.0", default-features = false }

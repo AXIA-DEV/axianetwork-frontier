@@ -60,7 +60,7 @@ pub struct Vicinity {
 	pub origin: H160,
 }
 
-/// Substrate backend for EVM.
+/// Axlib backend for EVM.
 pub struct Backend<'vicinity, T> {
 	vicinity: &'vicinity Vicinity,
 	_marker: PhantomData<T>,

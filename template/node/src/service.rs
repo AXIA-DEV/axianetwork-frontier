@@ -1,4 +1,4 @@
-//! Service and ServiceFactory implementation. Specialized wrapper over substrate service.
+//! Service and ServiceFactory implementation. Specialized wrapper over axlib service.
 
 use crate::cli::Cli;
 #[cfg(feature = "manual-seal")]
@@ -10,7 +10,7 @@ use fc_rpc::EthTask;
 use fc_rpc_core::types::FilterPool;
 use frontier_template_runtime::{self, opaque::Block, RuntimeApi, SLOT_DURATION};
 use futures::StreamExt;
-use sc_cli::SubstrateCli;
+use sc_cli::AxlibCli;
 use sc_client_api::{BlockchainEvents, ExecutorProvider, RemoteBackend};
 use sc_consensus_aura::{ImportQueueParams, SlotProportion, StartAuraParams};
 #[cfg(feature = "manual-seal")]

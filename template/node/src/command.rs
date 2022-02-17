@@ -1,4 +1,4 @@
-// This file is part of Substrate.
+// This file is part of Axlib.
 
 // Copyright (C) 2017-2021 Parity Technologies (UK) Ltd.
 // SPDX-License-Identifier: Apache-2.0
@@ -21,16 +21,16 @@ use crate::{
 	service::{self, frontier_database_dir},
 };
 use frontier_template_runtime::Block;
-use sc_cli::{ChainSpec, Role, RuntimeVersion, SubstrateCli};
+use sc_cli::{ChainSpec, Role, RuntimeVersion, AxlibCli};
 use sc_service::PartialComponents;
 
-impl SubstrateCli for Cli {
+impl AxlibCli for Cli {
 	fn impl_name() -> String {
 		"Frontier Node".into()
 	}
 
 	fn impl_version() -> String {
-		env!("SUBSTRATE_CLI_IMPL_VERSION").into()
+		env!("AXLIB_CLI_IMPL_VERSION").into()
 	}
 
 	fn description() -> String {

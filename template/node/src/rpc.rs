@@ -76,7 +76,7 @@ where
 	C: BlockchainEvents<Block>,
 	C: HeaderBackend<Block> + HeaderMetadata<Block, Error = BlockChainError>,
 	C: Send + Sync + 'static,
-	C::Api: substrate_frame_rpc_system::AccountNonceApi<Block, AccountId, Index>,
+	C::Api: axlib_frame_rpc_system::AccountNonceApi<Block, AccountId, Index>,
 	C::Api: BlockBuilder<Block>,
 	C::Api: pallet_transaction_payment_rpc::TransactionPaymentRuntimeApi<Block, Balance>,
 	C::Api: sp_api::ApiExt<Block>,
@@ -90,7 +90,7 @@ where
 		Web3ApiServer,
 	};
 	use pallet_transaction_payment_rpc::{TransactionPayment, TransactionPaymentApi};
-	use substrate_frame_rpc_system::{FullSystem, SystemApi};
+	use axlib_frame_rpc_system::{FullSystem, SystemApi};
 
 	let mut io = jsonrpc_core::IoHandler::default();
 	let FullDeps {
@@ -204,7 +204,7 @@ where
 	P: TransactionPool + 'static,
 	M: jsonrpc_core::Metadata + Default,
 {
-	use substrate_frame_rpc_system::{LightSystem, SystemApi};
+	use axlib_frame_rpc_system::{LightSystem, SystemApi};
 
 	let LightDeps {
 		client,
