@@ -25,7 +25,7 @@ members = [
 ]
 
 [patch.crates-io]
-evm = { git = "https://github.com/purestake/evm", branch = "moonbeam-polkadot-v0.9.11"}
-evm-runtime = { git = "https://github.com/purestake/evm", branch = "moonbeam-polkadot-v0.9.11" }
-evm-gasometer = { git = "https://github.com/purestake/evm", branch = "moonbeam-polkadot-v0.9.11" }
+evm = { git = "https://github.com/AXIA-DEV/axianetwork-evm", branch = "master" }
+evm-runtime = { git = "https://github.com/AXIA-DEV/axianetwork-evm", branch = "master" }
+evm-gasometer = { git = "https://github.com/AXIA-DEV/axianetwork-evm", branch = "master" }
 ethereum = { git = "https://github.com/purestake/ethereum", branch = "joshy-scale-info" }
