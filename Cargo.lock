@@ -367,6 +367,65 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cdb031dd78e28731d87d56cc8ffef4a8f36ca26c38fe2de700543e627f8a464a"
 
 [[package]]
+name = "axlib-build-script-utils"
+version = "3.0.0"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
+dependencies = [
+ "platforms",
+]
+
+[[package]]
+name = "axlib-frame-rpc-system"
+version = "4.0.0-dev"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
+dependencies = [
+ "frame-system-rpc-runtime-api",
+ "futures 0.3.16",
+ "jsonrpc-core",
+ "jsonrpc-core-client",
+ "jsonrpc-derive",
+ "log",
+ "parity-scale-codec",
+ "sc-client-api",
+ "sc-rpc-api",
+ "sc-transaction-pool-api",
+ "sp-api",
+ "sp-block-builder",
+ "sp-blockchain",
+ "sp-core",
+ "sp-runtime",
+]
+
+[[package]]
+name = "axlib-prometheus-endpoint"
+version = "0.9.0"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
+dependencies = [
+ "async-std",
+ "derive_more",
+ "futures-util",
+ "hyper",
+ "log",
+ "prometheus",
+ "tokio",
+]
+
+[[package]]
+name = "axlib-wasm-builder"
+version = "5.0.0-dev"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
+dependencies = [
+ "ansi_term 0.12.1",
+ "build-helper",
+ "cargo_metadata",
+ "sp-maybe-compressed-blob",
+ "tempfile",
+ "toml",
+ "walkdir",
+ "wasm-gc-api",
+]
+
+[[package]]
 name = "backtrace"
 version = "0.3.61"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1028,6 +1087,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "crypto-mac"
+version = "0.11.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b1d1a86f49236c215f271d40892d5fc950490551400b02ef360692c29815c714"
+dependencies = [
+ "generic-array 0.14.4",
+ "subtle 2.4.1",
+]
+
+[[package]]
 name = "ct-logs"
 version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1372,6 +1441,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "ethereum"
+version = "0.11.1"
+source = "git+https://github.com/AXIA-DEV/axianetwork-ethereum?branch=master#dcc29c960090855520fc091aa9c1987f4e18f439"
+dependencies = [
+ "bytes 1.0.1",
+ "ethereum-types",
+ "hash-db",
+ "hash256-std-hasher",
+ "parity-scale-codec",
+ "rlp",
+ "rlp-derive",
+ "scale-info",
+ "serde",
+ "sha3 0.9.1",
+ "triehash",
+]
+
+[[package]]
 name = "ethereum-types"
 version = "0.12.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1396,10 +1483,10 @@ checksum = "f7531096570974c3a9dcf9e4b8e1cede1ec26cf5046219fb3b9d897503b9be59"
 [[package]]
 name = "evm"
 version = "0.30.1"
-source = "git+https://github.com/purestake/evm?branch=moonbeam-polkadot-v0.9.11#443d0f66509dc4830b821ac45fa7e655de6df394"
+source = "git+https://github.com/AXIA-DEV/axianetwork-evm?branch=master#253b592a40ff164aa952dffbd90fe8a7f51b3d05"
 dependencies = [
  "environmental",
- "ethereum",
+ "ethereum 0.11.1",
  "evm-core",
  "evm-gasometer",
  "evm-runtime",
@@ -1415,7 +1502,7 @@ dependencies = [
 [[package]]
 name = "evm-core"
 version = "0.30.0"
-source = "git+https://github.com/purestake/evm?branch=moonbeam-polkadot-v0.9.11#443d0f66509dc4830b821ac45fa7e655de6df394"
+source = "git+https://github.com/AXIA-DEV/axianetwork-evm?branch=master#253b592a40ff164aa952dffbd90fe8a7f51b3d05"
 dependencies = [
  "funty",
  "parity-scale-codec",
@@ -1427,7 +1514,7 @@ dependencies = [
 [[package]]
 name = "evm-gasometer"
 version = "0.30.0"
-source = "git+https://github.com/purestake/evm?branch=moonbeam-polkadot-v0.9.11#443d0f66509dc4830b821ac45fa7e655de6df394"
+source = "git+https://github.com/AXIA-DEV/axianetwork-evm?branch=master#253b592a40ff164aa952dffbd90fe8a7f51b3d05"
 dependencies = [
  "environmental",
  "evm-core",
@@ -1438,7 +1525,7 @@ dependencies = [
 [[package]]
 name = "evm-runtime"
 version = "0.30.0"
-source = "git+https://github.com/purestake/evm?branch=moonbeam-polkadot-v0.9.11#443d0f66509dc4830b821ac45fa7e655de6df394"
+source = "git+https://github.com/AXIA-DEV/axianetwork-evm?branch=master#253b592a40ff164aa952dffbd90fe8a7f51b3d05"
 dependencies = [
  "environmental",
  "evm-core",
@@ -1481,6 +1568,7 @@ name = "fc-consensus"
 version = "2.0.0-dev"
 dependencies = [
  "async-trait",
+ "axlib-prometheus-endpoint",
  "derive_more",
  "fc-db",
  "fp-consensus",
@@ -1498,7 +1586,6 @@ dependencies = [
  "sp-inherents",
  "sp-runtime",
  "sp-timestamp",
- "axlib-prometheus-endpoint",
 ]
 
 [[package]]
@@ -1537,7 +1624,7 @@ dependencies = [
 name = "fc-rpc"
 version = "2.0.0-dev"
 dependencies = [
- "ethereum",
+ "ethereum 0.9.0",
  "ethereum-types",
  "evm",
  "fc-consensus",
@@ -1666,7 +1753,7 @@ checksum = "3f9eec918d3f24069decb9af1554cad7c880e2da24a9afd88aca000531ab82c1"
 [[package]]
 name = "fork-tree"
 version = "3.0.0"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "parity-scale-codec",
 ]
@@ -1685,7 +1772,7 @@ dependencies = [
 name = "fp-consensus"
 version = "2.0.0-dev"
 dependencies = [
- "ethereum",
+ "ethereum 0.9.0",
  "parity-scale-codec",
  "rlp",
  "sha3 0.8.2",
@@ -1710,7 +1797,7 @@ dependencies = [
 name = "fp-rpc"
 version = "3.0.0-dev"
 dependencies = [
- "ethereum",
+ "ethereum 0.9.0",
  "ethereum-types",
  "fp-evm",
  "parity-scale-codec",
@@ -1726,7 +1813,7 @@ dependencies = [
 name = "fp-self-contained"
 version = "1.0.0-dev"
 dependencies = [
- "ethereum",
+ "ethereum 0.9.0",
  "frame-support",
  "parity-scale-codec",
  "parity-util-mem",
@@ -1745,7 +1832,7 @@ version = "2.0.0"
 [[package]]
 name = "frame-benchmarking"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -1765,7 +1852,7 @@ dependencies = [
 [[package]]
 name = "frame-benchmarking-cli"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "Inflector",
  "chrono",
@@ -1791,7 +1878,7 @@ dependencies = [
 [[package]]
 name = "frame-executive"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -1819,7 +1906,7 @@ dependencies = [
 [[package]]
 name = "frame-support"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "bitflags",
  "frame-metadata",
@@ -1846,7 +1933,7 @@ dependencies = [
 [[package]]
 name = "frame-support-procedural"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "Inflector",
  "frame-support-procedural-tools",
@@ -1858,7 +1945,7 @@ dependencies = [
 [[package]]
 name = "frame-support-procedural-tools"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "frame-support-procedural-tools-derive",
  "proc-macro-crate 1.0.0",
@@ -1870,7 +1957,7 @@ dependencies = [
 [[package]]
 name = "frame-support-procedural-tools-derive"
 version = "3.0.0"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -1880,7 +1967,7 @@ dependencies = [
 [[package]]
 name = "frame-system"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "frame-support",
  "log",
@@ -1897,7 +1984,7 @@ dependencies = [
 [[package]]
 name = "frame-system-benchmarking"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -1912,7 +1999,7 @@ dependencies = [
 [[package]]
 name = "frame-system-rpc-runtime-api"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "parity-scale-codec",
  "sp-api",
@@ -1923,6 +2010,8 @@ name = "frontier-template-node"
 version = "0.0.0"
 dependencies = [
  "async-trait",
+ "axlib-build-script-utils",
+ "axlib-frame-rpc-system",
  "fc-consensus",
  "fc-db",
  "fc-mapping-sync",
@@ -1968,14 +2057,13 @@ dependencies = [
  "sp-runtime",
  "sp-timestamp",
  "structopt",
- "axlib-build-script-utils",
- "axlib-frame-rpc-system",
 ]
 
 [[package]]
 name = "frontier-template-runtime"
 version = "0.0.0"
 dependencies = [
+ "axlib-wasm-builder",
  "fp-rpc",
  "fp-self-contained",
  "frame-benchmarking",
@@ -2013,7 +2101,6 @@ dependencies = [
  "sp-std",
  "sp-transaction-pool",
  "sp-version",
- "axlib-wasm-builder",
 ]
 
 [[package]]
@@ -2387,6 +2474,16 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "126888268dcc288495a26bf004b38c5fdbb31682f992c84ceb046a1f0fe38840"
 dependencies = [
  "crypto-mac 0.8.0",
+ "digest 0.9.0",
+]
+
+[[package]]
+name = "hmac"
+version = "0.11.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2a2a2320eb7ec0ebe8da8f744d7812d9fc4cb4d09344ac01898dbcb6a20ae69b"
+dependencies = [
+ "crypto-mac 0.11.1",
  "digest 0.9.0",
 ]
 
@@ -4137,7 +4234,7 @@ dependencies = [
 [[package]]
 name = "pallet-aura"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -4153,7 +4250,7 @@ dependencies = [
 [[package]]
 name = "pallet-authorship"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -4168,7 +4265,7 @@ dependencies = [
 [[package]]
 name = "pallet-balances"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -4203,7 +4300,7 @@ dependencies = [
 name = "pallet-ethereum"
 version = "4.0.0-dev"
 dependencies = [
- "ethereum",
+ "ethereum 0.9.0",
  "ethereum-types",
  "evm",
  "fp-consensus",
@@ -4275,7 +4372,7 @@ dependencies = [
  "pallet-evm-test-vector-support",
  "sp-core",
  "sp-io",
- "axlib-bn",
+ "substrate-bn",
 ]
 
 [[package]]
@@ -4359,7 +4456,7 @@ dependencies = [
 [[package]]
 name = "pallet-grandpa"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -4382,7 +4479,7 @@ dependencies = [
 [[package]]
 name = "pallet-randomness-collective-flip"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -4396,7 +4493,7 @@ dependencies = [
 [[package]]
 name = "pallet-session"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -4417,7 +4514,7 @@ dependencies = [
 [[package]]
 name = "pallet-sudo"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -4431,7 +4528,7 @@ dependencies = [
 [[package]]
 name = "pallet-timestamp"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -4448,7 +4545,7 @@ dependencies = [
 [[package]]
 name = "pallet-transaction-payment"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -4465,7 +4562,7 @@ dependencies = [
 [[package]]
 name = "pallet-transaction-payment-rpc"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "jsonrpc-core",
  "jsonrpc-core-client",
@@ -4482,7 +4579,7 @@ dependencies = [
 [[package]]
 name = "pallet-transaction-payment-rpc-runtime-api"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "pallet-transaction-payment",
  "parity-scale-codec",
@@ -4656,21 +4753,20 @@ checksum = "acbf547ad0c65e31259204bd90935776d1c693cec2f4ff7abb7a1bbbd40dfe58"
 
 [[package]]
 name = "pbkdf2"
-version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "006c038a43a45995a9670da19e67600114740e8511d4333bf97a56e66a7542d9"
-dependencies = [
- "byteorder",
- "crypto-mac 0.7.0",
-]
-
-[[package]]
-name = "pbkdf2"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "216eaa586a190f0a738f2f918511eecfa90f13295abec0e457cdebcceda80cbd"
 dependencies = [
  "crypto-mac 0.8.0",
+]
+
+[[package]]
+name = "pbkdf2"
+version = "0.8.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d95f5254224e617595d2cc3cc73ff0a5eaf2637519e25f03388154e9378b6ffa"
+dependencies = [
+ "crypto-mac 0.11.1",
 ]
 
 [[package]]
@@ -5483,7 +5579,7 @@ dependencies = [
 [[package]]
 name = "sc-allocator"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "log",
  "sp-core",
@@ -5494,8 +5590,9 @@ dependencies = [
 [[package]]
 name = "sc-basic-authorship"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
+ "axlib-prometheus-endpoint",
  "futures 0.3.16",
  "futures-timer 3.0.2",
  "log",
@@ -5511,13 +5608,12 @@ dependencies = [
  "sp-core",
  "sp-inherents",
  "sp-runtime",
- "axlib-prometheus-endpoint",
 ]
 
 [[package]]
 name = "sc-block-builder"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "parity-scale-codec",
  "sc-client-api",
@@ -5533,7 +5629,7 @@ dependencies = [
 [[package]]
 name = "sc-chain-spec"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "impl-trait-for-tuples 0.2.1",
  "parity-scale-codec",
@@ -5549,7 +5645,7 @@ dependencies = [
 [[package]]
 name = "sc-chain-spec-derive"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "proc-macro-crate 1.0.0",
  "proc-macro2",
@@ -5560,7 +5656,7 @@ dependencies = [
 [[package]]
 name = "sc-cli"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "chrono",
  "fdlimit",
@@ -5598,8 +5694,9 @@ dependencies = [
 [[package]]
 name = "sc-client-api"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
+ "axlib-prometheus-endpoint",
  "fnv",
  "futures 0.3.16",
  "hash-db",
@@ -5620,13 +5717,12 @@ dependencies = [
  "sp-state-machine",
  "sp-storage",
  "sp-trie",
- "axlib-prometheus-endpoint",
 ]
 
 [[package]]
 name = "sc-client-db"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "hash-db",
  "kvdb",
@@ -5651,9 +5747,10 @@ dependencies = [
 [[package]]
 name = "sc-consensus"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "async-trait",
+ "axlib-prometheus-endpoint",
  "futures 0.3.16",
  "futures-timer 3.0.2",
  "libp2p",
@@ -5668,16 +5765,16 @@ dependencies = [
  "sp-core",
  "sp-runtime",
  "sp-state-machine",
- "axlib-prometheus-endpoint",
  "thiserror",
 ]
 
 [[package]]
 name = "sc-consensus-aura"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "async-trait",
+ "axlib-prometheus-endpoint",
  "derive_more",
  "futures 0.3.16",
  "log",
@@ -5698,15 +5795,15 @@ dependencies = [
  "sp-inherents",
  "sp-keystore",
  "sp-runtime",
- "axlib-prometheus-endpoint",
 ]
 
 [[package]]
 name = "sc-consensus-babe"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "async-trait",
+ "axlib-prometheus-endpoint",
  "derive_more",
  "fork-tree",
  "futures 0.3.16",
@@ -5741,13 +5838,12 @@ dependencies = [
  "sp-keystore",
  "sp-runtime",
  "sp-version",
- "axlib-prometheus-endpoint",
 ]
 
 [[package]]
 name = "sc-consensus-epochs"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "fork-tree",
  "parity-scale-codec",
@@ -5760,10 +5856,11 @@ dependencies = [
 [[package]]
 name = "sc-consensus-manual-seal"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "assert_matches",
  "async-trait",
+ "axlib-prometheus-endpoint",
  "derive_more",
  "futures 0.3.16",
  "jsonrpc-core",
@@ -5788,13 +5885,12 @@ dependencies = [
  "sp-keystore",
  "sp-runtime",
  "sp-timestamp",
- "axlib-prometheus-endpoint",
 ]
 
 [[package]]
 name = "sc-consensus-slots"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "async-trait",
  "futures 0.3.16",
@@ -5820,7 +5916,7 @@ dependencies = [
 [[package]]
 name = "sc-executor"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "lazy_static",
  "libsecp256k1 0.6.0",
@@ -5846,7 +5942,7 @@ dependencies = [
 [[package]]
 name = "sc-executor-common"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "derive_more",
  "environmental",
@@ -5864,7 +5960,7 @@ dependencies = [
 [[package]]
 name = "sc-executor-wasmi"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "log",
  "parity-scale-codec",
@@ -5880,7 +5976,7 @@ dependencies = [
 [[package]]
 name = "sc-executor-wasmtime"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "cfg-if 1.0.0",
  "libc",
@@ -5898,9 +5994,10 @@ dependencies = [
 [[package]]
 name = "sc-finality-grandpa"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "async-trait",
+ "axlib-prometheus-endpoint",
  "derive_more",
  "dyn-clone",
  "finality-grandpa",
@@ -5929,13 +6026,12 @@ dependencies = [
  "sp-finality-grandpa",
  "sp-keystore",
  "sp-runtime",
- "axlib-prometheus-endpoint",
 ]
 
 [[package]]
 name = "sc-informant"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "ansi_term 0.12.1",
  "futures 0.3.16",
@@ -5952,7 +6048,7 @@ dependencies = [
 [[package]]
 name = "sc-keystore"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "async-trait",
  "derive_more",
@@ -5967,7 +6063,7 @@ dependencies = [
 [[package]]
 name = "sc-light"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "hash-db",
  "parity-scale-codec",
@@ -5985,11 +6081,12 @@ dependencies = [
 [[package]]
 name = "sc-network"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "async-std",
  "async-trait",
  "asynchronous-codec 0.5.0",
+ "axlib-prometheus-endpoint",
  "bitflags",
  "bytes 1.0.1",
  "cid",
@@ -6026,7 +6123,6 @@ dependencies = [
  "sp-core",
  "sp-finality-grandpa",
  "sp-runtime",
- "axlib-prometheus-endpoint",
  "thiserror",
  "unsigned-varint 0.6.0",
  "void",
@@ -6036,8 +6132,9 @@ dependencies = [
 [[package]]
 name = "sc-network-gossip"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
+ "axlib-prometheus-endpoint",
  "futures 0.3.16",
  "futures-timer 3.0.2",
  "libp2p",
@@ -6045,14 +6142,13 @@ dependencies = [
  "lru",
  "sc-network",
  "sp-runtime",
- "axlib-prometheus-endpoint",
  "tracing",
 ]
 
 [[package]]
 name = "sc-offchain"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "bytes 1.0.1",
  "fnv",
@@ -6079,7 +6175,7 @@ dependencies = [
 [[package]]
 name = "sc-peerset"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "futures 0.3.16",
  "libp2p",
@@ -6092,16 +6188,16 @@ dependencies = [
 [[package]]
 name = "sc-proposer-metrics"
 version = "0.9.0"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
- "log",
  "axlib-prometheus-endpoint",
+ "log",
 ]
 
 [[package]]
 name = "sc-rpc"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "futures 0.3.16",
  "hash-db",
@@ -6132,7 +6228,7 @@ dependencies = [
 [[package]]
 name = "sc-rpc-api"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "futures 0.3.16",
  "jsonrpc-core",
@@ -6157,8 +6253,9 @@ dependencies = [
 [[package]]
 name = "sc-rpc-server"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
+ "axlib-prometheus-endpoint",
  "futures 0.3.16",
  "jsonrpc-core",
  "jsonrpc-http-server",
@@ -6167,16 +6264,16 @@ dependencies = [
  "jsonrpc-ws-server",
  "log",
  "serde_json",
- "axlib-prometheus-endpoint",
  "tokio",
 ]
 
 [[package]]
 name = "sc-service"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "async-trait",
+ "axlib-prometheus-endpoint",
  "directories",
  "exit-future",
  "futures 0.3.16",
@@ -6228,7 +6325,6 @@ dependencies = [
  "sp-transaction-storage-proof",
  "sp-trie",
  "sp-version",
- "axlib-prometheus-endpoint",
  "tempfile",
  "thiserror",
  "tokio",
@@ -6239,7 +6335,7 @@ dependencies = [
 [[package]]
 name = "sc-state-db"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "log",
  "parity-scale-codec",
@@ -6253,7 +6349,7 @@ dependencies = [
 [[package]]
 name = "sc-telemetry"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "chrono",
  "futures 0.3.16",
@@ -6271,7 +6367,7 @@ dependencies = [
 [[package]]
 name = "sc-tracing"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "ansi_term 0.12.1",
  "atty",
@@ -6301,7 +6397,7 @@ dependencies = [
 [[package]]
 name = "sc-tracing-proc-macro"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "proc-macro-crate 1.0.0",
  "proc-macro2",
@@ -6312,8 +6408,9 @@ dependencies = [
 [[package]]
 name = "sc-transaction-pool"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
+ "axlib-prometheus-endpoint",
  "futures 0.3.16",
  "intervalier",
  "linked-hash-map",
@@ -6332,14 +6429,13 @@ dependencies = [
  "sp-runtime",
  "sp-tracing",
  "sp-transaction-pool",
- "axlib-prometheus-endpoint",
  "thiserror",
 ]
 
 [[package]]
 name = "sc-transaction-pool-api"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "derive_more",
  "futures 0.3.16",
@@ -6353,7 +6449,7 @@ dependencies = [
 [[package]]
 name = "sc-utils"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "futures 0.3.16",
  "futures-timer 3.0.2",
@@ -6746,7 +6842,7 @@ dependencies = [
 [[package]]
 name = "sp-api"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "hash-db",
  "log",
@@ -6763,7 +6859,7 @@ dependencies = [
 [[package]]
 name = "sp-api-proc-macro"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "blake2-rfc",
  "proc-macro-crate 1.0.0",
@@ -6775,7 +6871,7 @@ dependencies = [
 [[package]]
 name = "sp-application-crypto"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "parity-scale-codec",
  "scale-info",
@@ -6788,7 +6884,7 @@ dependencies = [
 [[package]]
 name = "sp-arithmetic"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "integer-sqrt",
  "num-traits",
@@ -6803,7 +6899,7 @@ dependencies = [
 [[package]]
 name = "sp-authorship"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "async-trait",
  "parity-scale-codec",
@@ -6815,7 +6911,7 @@ dependencies = [
 [[package]]
 name = "sp-block-builder"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "parity-scale-codec",
  "sp-api",
@@ -6827,7 +6923,7 @@ dependencies = [
 [[package]]
 name = "sp-blockchain"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "futures 0.3.16",
  "log",
@@ -6845,7 +6941,7 @@ dependencies = [
 [[package]]
 name = "sp-consensus"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "async-trait",
  "futures 0.3.16",
@@ -6864,7 +6960,7 @@ dependencies = [
 [[package]]
 name = "sp-consensus-aura"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "async-trait",
  "parity-scale-codec",
@@ -6882,7 +6978,7 @@ dependencies = [
 [[package]]
 name = "sp-consensus-babe"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "async-trait",
  "merlin",
@@ -6905,7 +7001,7 @@ dependencies = [
 [[package]]
 name = "sp-consensus-slots"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "parity-scale-codec",
  "scale-info",
@@ -6916,7 +7012,7 @@ dependencies = [
 [[package]]
 name = "sp-consensus-vrf"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "parity-scale-codec",
  "schnorrkel",
@@ -6928,7 +7024,7 @@ dependencies = [
 [[package]]
 name = "sp-core"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "base58",
  "blake2-rfc",
@@ -6962,7 +7058,7 @@ dependencies = [
  "sp-std",
  "sp-storage",
  "ss58-registry",
- "axlib-bip39",
+ "substrate-bip39",
  "thiserror",
  "tiny-bip39",
  "tiny-keccak",
@@ -6974,7 +7070,7 @@ dependencies = [
 [[package]]
 name = "sp-database"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "kvdb",
  "parking_lot",
@@ -6983,7 +7079,7 @@ dependencies = [
 [[package]]
 name = "sp-debug-derive"
 version = "3.0.0"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -6993,7 +7089,7 @@ dependencies = [
 [[package]]
 name = "sp-externalities"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "environmental",
  "parity-scale-codec",
@@ -7004,7 +7100,7 @@ dependencies = [
 [[package]]
 name = "sp-finality-grandpa"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "finality-grandpa",
  "log",
@@ -7022,7 +7118,7 @@ dependencies = [
 [[package]]
 name = "sp-inherents"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "async-trait",
  "impl-trait-for-tuples 0.2.1",
@@ -7036,7 +7132,7 @@ dependencies = [
 [[package]]
 name = "sp-io"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "futures 0.3.16",
  "hash-db",
@@ -7060,7 +7156,7 @@ dependencies = [
 [[package]]
 name = "sp-keyring"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "lazy_static",
  "sp-core",
@@ -7071,7 +7167,7 @@ dependencies = [
 [[package]]
 name = "sp-keystore"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "async-trait",
  "derive_more",
@@ -7088,7 +7184,7 @@ dependencies = [
 [[package]]
 name = "sp-maybe-compressed-blob"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "zstd",
 ]
@@ -7096,7 +7192,7 @@ dependencies = [
 [[package]]
 name = "sp-offchain"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "sp-api",
  "sp-core",
@@ -7106,7 +7202,7 @@ dependencies = [
 [[package]]
 name = "sp-panic-handler"
 version = "3.0.0"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "backtrace",
 ]
@@ -7114,7 +7210,7 @@ dependencies = [
 [[package]]
 name = "sp-rpc"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "rustc-hash",
  "serde",
@@ -7124,7 +7220,7 @@ dependencies = [
 [[package]]
 name = "sp-runtime"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "either",
  "hash256-std-hasher",
@@ -7146,7 +7242,7 @@ dependencies = [
 [[package]]
 name = "sp-runtime-interface"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "impl-trait-for-tuples 0.2.1",
  "parity-scale-codec",
@@ -7163,7 +7259,7 @@ dependencies = [
 [[package]]
 name = "sp-runtime-interface-proc-macro"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "Inflector",
  "proc-macro-crate 1.0.0",
@@ -7175,7 +7271,7 @@ dependencies = [
 [[package]]
 name = "sp-serializer"
 version = "3.0.0"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "serde",
  "serde_json",
@@ -7184,7 +7280,7 @@ dependencies = [
 [[package]]
 name = "sp-session"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "parity-scale-codec",
  "scale-info",
@@ -7198,7 +7294,7 @@ dependencies = [
 [[package]]
 name = "sp-staking"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "parity-scale-codec",
  "scale-info",
@@ -7209,7 +7305,7 @@ dependencies = [
 [[package]]
 name = "sp-state-machine"
 version = "0.10.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "hash-db",
  "log",
@@ -7232,12 +7328,12 @@ dependencies = [
 [[package]]
 name = "sp-std"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 
 [[package]]
 name = "sp-storage"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "impl-serde",
  "parity-scale-codec",
@@ -7250,7 +7346,7 @@ dependencies = [
 [[package]]
 name = "sp-tasks"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "log",
  "sp-core",
@@ -7263,7 +7359,7 @@ dependencies = [
 [[package]]
 name = "sp-timestamp"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "async-trait",
  "futures-timer 3.0.2",
@@ -7279,7 +7375,7 @@ dependencies = [
 [[package]]
 name = "sp-tracing"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "parity-scale-codec",
  "sp-std",
@@ -7291,7 +7387,7 @@ dependencies = [
 [[package]]
 name = "sp-transaction-pool"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "sp-api",
  "sp-runtime",
@@ -7300,7 +7396,7 @@ dependencies = [
 [[package]]
 name = "sp-transaction-storage-proof"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "async-trait",
  "log",
@@ -7316,7 +7412,7 @@ dependencies = [
 [[package]]
 name = "sp-trie"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "hash-db",
  "memory-db",
@@ -7331,7 +7427,7 @@ dependencies = [
 [[package]]
 name = "sp-version"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "impl-serde",
  "parity-scale-codec",
@@ -7347,7 +7443,7 @@ dependencies = [
 [[package]]
 name = "sp-version-proc-macro"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "parity-scale-codec",
  "proc-macro2",
@@ -7358,7 +7454,7 @@ dependencies = [
 [[package]]
 name = "sp-wasm-interface"
 version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
+source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
 dependencies = [
  "impl-trait-for-tuples 0.2.1",
  "parity-scale-codec",
@@ -7463,20 +7559,20 @@ dependencies = [
 ]
 
 [[package]]
-name = "axlib-bip39"
-version = "0.4.2"
+name = "substrate-bip39"
+version = "0.4.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bed6646a0159b9935b5d045611560eeef842b78d7adc3ba36f5ca325a13a0236"
+checksum = "49eee6965196b32f882dd2ee85a92b1dbead41b04e53907f269de3b0dc04733c"
 dependencies = [
- "hmac 0.7.1",
- "pbkdf2 0.3.0",
+ "hmac 0.11.0",
+ "pbkdf2 0.8.0",
  "schnorrkel",
- "sha2 0.8.2",
+ "sha2 0.9.8",
  "zeroize",
 ]
 
 [[package]]
-name = "axlib-bn"
+name = "substrate-bn"
 version = "0.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "72b5bbfa79abbae15dd642ea8176a21a635ff3c00059961d1ea27ad04e5b441c"
@@ -7486,65 +7582,6 @@ dependencies = [
  "lazy_static",
  "rand 0.8.4",
  "rustc-hex",
-]
-
-[[package]]
-name = "axlib-build-script-utils"
-version = "3.0.0"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
-dependencies = [
- "platforms",
-]
-
-[[package]]
-name = "axlib-frame-rpc-system"
-version = "4.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
-dependencies = [
- "frame-system-rpc-runtime-api",
- "futures 0.3.16",
- "jsonrpc-core",
- "jsonrpc-core-client",
- "jsonrpc-derive",
- "log",
- "parity-scale-codec",
- "sc-client-api",
- "sc-rpc-api",
- "sc-transaction-pool-api",
- "sp-api",
- "sp-block-builder",
- "sp-blockchain",
- "sp-core",
- "sp-runtime",
-]
-
-[[package]]
-name = "axlib-prometheus-endpoint"
-version = "0.9.0"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
-dependencies = [
- "async-std",
- "derive_more",
- "futures-util",
- "hyper",
- "log",
- "prometheus",
- "tokio",
-]
-
-[[package]]
-name = "axlib-wasm-builder"
-version = "5.0.0-dev"
-source = "git+https://github.com/purestake/axlib?branch=moonbeam-polkadot-v0.9.12#16d14662d4337231e9da7277a7b11cc204d84a34"
-dependencies = [
- "ansi_term 0.12.1",
- "build-helper",
- "cargo_metadata",
- "sp-maybe-compressed-blob",
- "tempfile",
- "toml",
- "walkdir",
- "wasm-gc-api",
 ]
 
 [[package]]
