@@ -66,8 +66,8 @@ block that has been pre-configured with an EVM account for
 [Alice](https://docs.axlib.io/v3/tools/subkey#well-known-keys). When
 [a development chain is started](https://github.com/axlib-developer-hub/axlib-node-template#run),
 Alice's EVM account will be funded with a large amount of Ether. The
-[Polkadot UI](https://polkadot.js.org/apps/#?rpc=ws://127.0.0.1:9944) can be used to see the details
-of Alice's EVM account. In order to view an EVM account, use the `Developer` tab of the Polkadot UI
+[Axia UI](https://axia.js.org/apps/#?rpc=ws://127.0.0.1:9944) can be used to see the details
+of Alice's EVM account. In order to view an EVM account, use the `Developer` tab of the Axia UI
 `Settings` app to define the EVM `Account` type as below. It is also necessary to define the
 `Address` and `LookupSource` to send transaction, and `Transaction` and `Signature` to be able to
 inspect blocks:
@@ -114,7 +114,7 @@ Alice's EVM account ID was calculated using
 ## Example 1: ERC20 Contract Deployment using EVM dispatchable
 
 The following steps are also available as a [Typescript script](examples/contract-erc20) using
-Polkadot JS SDK
+Axia JS SDK
 
 ### Step 1: Contract creation
 
@@ -128,7 +128,7 @@ which can be used to deploy it to the Axlib blockchain.
 > Further reading:
 > [the ERC-20 token standard](https://github.com/danforbes/danforbes/blob/master/writings/eth-dev.md#EIP-20-ERC-20-Token-Standard)
 
-Use the Polkadot UI `Extrinsics` app to deploy the contract from Alice's account (submit the
+Use the Axia UI `Extrinsics` app to deploy the contract from Alice's account (submit the
 extrinsic as a signed transaction) using `evm > create` with the following parameters:
 
 ```

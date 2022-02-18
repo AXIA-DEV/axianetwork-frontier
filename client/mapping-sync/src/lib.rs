@@ -152,7 +152,7 @@ where
 			.write_current_syncing_tips(current_syncing_tips)?;
 		Ok(true)
 	} else {
-		if SyncStrategy::Parachain == strategy
+		if SyncStrategy::Allychain == strategy
 			&& operating_header.number() > &client.info().best_number
 		{
 			return Ok(false);

@@ -1,8 +1,8 @@
-import { ApiPromise, WsProvider, Keyring } from "@polkadot/api";
-import { KeyringPair } from '@polkadot/keyring/types';
-import { U8aFixed } from '@polkadot/types/codec';
+import { ApiPromise, WsProvider, Keyring } from "@axia/api";
+import { KeyringPair } from '@axia/keyring/types';
+import { U8aFixed } from '@axia/types/codec';
 import * as web3Utils from 'web3-utils';
-import * as crypto from '@polkadot/util-crypto';
+import * as crypto from '@axia/util-crypto';
 
 // Provider is set to localhost for development
 const wsProvider = new WsProvider("ws://localhost:9944");
@@ -17,7 +17,7 @@ const ERC20_BYTECODES = require("./truffle/contracts/MyToken.json").bytecode;
 async function init() {
 	console.log(`Initiating the API (ignore message "Unable to resolve type B..." and "Unknown types found...")`);
 
-	// Initiate the polkadot API.
+	// Initiate the axia API.
 	const api = await ApiPromise.create({
 		provider: wsProvider,
 		types: {

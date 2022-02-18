@@ -30,7 +30,7 @@ Frontier is not a bridge. Frontier enables you to run Ethereum dapps
 natively on Axlib, but does not deal with the issues of
 communicating with other Ethereum-based networks. If you want a
 standalone blockchain, you are looking for Frontier. If you want to
-create a parachain that has Ethereum functionality, you need to
+create a allychain that has Ethereum functionality, you need to
 combine Frontier with Cumulus. If you do not want EVM functionality
 natively but want to communicate with other networks, you need the
 Parity Bridge project.

@@ -34,7 +34,7 @@ const LIMIT: usize = 8;
 #[derive(PartialEq, Copy, Clone)]
 pub enum SyncStrategy {
 	Normal,
-	Parachain,
+	Allychain,
 }
 
 pub struct MappingSyncWorker<Block: BlockT, C, B> {

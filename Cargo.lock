@@ -367,6 +367,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa"
 
 [[package]]
+name = "axlib-bn"
+version = "0.6.0"
+source = "git+https://github.com/AXIA-DEV/axlib-bn?branch=master#23dcfa9e2da23729c1ca7e567c1e73c3c9c8978e"
+dependencies = [
+ "byteorder",
+ "crunchy",
+ "lazy_static",
+ "rand 0.8.5",
+ "rustc-hex",
+]
+
+[[package]]
 name = "axlib-build-script-utils"
 version = "3.0.0"
 source = "git+https://github.com/AXIA-DEV/axlib-axtend?branch=master#250612419228cd3a03591aebf8b721e76f5cc7b3"
@@ -4331,11 +4343,11 @@ dependencies = [
 name = "pallet-evm-precompile-bn128"
 version = "2.0.0-dev"
 dependencies = [
+ "axlib-bn",
  "fp-evm",
  "pallet-evm-test-vector-support",
  "sp-core",
  "sp-io",
- "substrate-bn",
 ]
 
 [[package]]
@@ -7519,19 +7531,6 @@ dependencies = [
  "schnorrkel",
  "sha2 0.9.9",
  "zeroize",
-]
-
-[[package]]
-name = "substrate-bn"
-version = "0.6.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "72b5bbfa79abbae15dd642ea8176a21a635ff3c00059961d1ea27ad04e5b441c"
-dependencies = [
- "byteorder",
- "crunchy",
- "lazy_static",
- "rand 0.8.5",
- "rustc-hex",
 ]
 
 [[package]]
