@@ -28,4 +28,4 @@ members = [
 evm = { git = "https://github.com/AXIA-DEV/axianetwork-evm", branch = "master" }
 evm-runtime = { git = "https://github.com/AXIA-DEV/axianetwork-evm", branch = "master" }
 evm-gasometer = { git = "https://github.com/AXIA-DEV/axianetwork-evm", branch = "master" }
-ethereum = { git = "https://github.com/purestake/ethereum", branch = "joshy-scale-info" }
+ethereum = { git = "https://github.com/AXIA-DEV/ethereum-joshy-scale-info", branch = "master" }

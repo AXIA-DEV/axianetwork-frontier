@@ -1425,7 +1425,7 @@ dependencies = [
 [[package]]
 name = "ethereum"
 version = "0.9.0"
-source = "git+https://github.com/purestake/ethereum?branch=joshy-scale-info#2b98173bd88c05bfeefad421d260101b9008497b"
+source = "git+https://github.com/AXIA-DEV/ethereum-joshy-scale-info?branch=master#e1e232307ad6977239752d3966ed144c53952a61"
 dependencies = [
  "bytes 1.0.1",
  "ethereum-types",
